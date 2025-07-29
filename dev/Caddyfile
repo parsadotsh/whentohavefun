@@ -1,0 +1,12 @@
+:8787
+
+
+reverse_proxy /api/* localhost:8788 {
+    
+}
+
+
+reverse_proxy /* localhost:5173 {
+    
+}
+

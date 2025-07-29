@@ -1,11 +1,60 @@
 #:schema node_modules/wrangler/config-schema.json
-name = "whentohavefun"
+name = "wheretohavefun"
+main = "src/index.ts"
 compatibility_date = "2024-11-12"
-main = ".svelte-kit/cloudflare/_worker.js"
-assets = { directory = ".svelte-kit/cloudflare", binding = "ASSETS" }
+compatibility_flags = ["nodejs_compat"]
+assets = { directory = "./front/build", binding = "ASSETS" }
+
+# Bind a Durable Object. Durable objects are a scale-to-zero compute primitive based on the actor model.
+# Durable Objects can live for as long as needed. Use these when you need a long-running "server", such as in realtime apps.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects
+[[durable_objects.bindings]]
+name = "SOCKET_OBJECT"
+class_name = "SocketObject"
+
+# Durable Object migrations.
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#migrations
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["SocketObject"]
 
 # Workers Logs
 # Docs: https://developers.cloudflare.com/workers/observability/logs/workers-logs/
 # Configuration: https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs
 [observability]
 enabled = true
+
+[vars]
+WEB_APP_URL = "https://t.me/DEVumridesbot/pickadatedev"
+BOT_INFO = """{
+    "id": 6981308574,
+    "is_bot": true,
+    "first_name": "TestingBot",
+    "username": "DEVumridesbot",
+    "can_join_groups": true,
+    "can_read_all_group_messages": false,
+    "supports_inline_queries": false,
+    "can_connect_to_business": false,
+    "has_main_web_app": true
+}"""
+
+[env.production]
+route = { pattern = "pickadatebot.parsa.sh", custom_domain = true }
+
+[[env.production.durable_objects.bindings]]
+name = "SOCKET_OBJECT"
+class_name = "SocketObject"
+
+[env.production.vars]
+WEB_APP_URL = "https://t.me/pickadatebot/pickadate"
+BOT_INFO = """{
+    "id": 7705808425,
+    "is_bot": true,
+    "first_name": "Pick A Date!",
+    "username": "pickadatebot",
+    "can_join_groups": true,
+    "can_read_all_group_messages": false,
+    "supports_inline_queries": true,
+    "can_connect_to_business": false,
+    "has_main_web_app": false
+}"""

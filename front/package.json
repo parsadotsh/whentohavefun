@@ -1,0 +1,44 @@
+{
+	"name": "front",
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev --host 0.0.0.0",
+		"build": "vite build --mode prod",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"format": "prettier --write .",
+		"lint": "prettier --check ."
+	},
+	"devDependencies": {
+		"@iconify/json": "^2.2.273",
+		"@internationalized/date": "^3.5.6",
+		"@sveltejs/adapter-static": "^3.0.6",
+		"@sveltejs/kit": "^2.0.0",
+		"@sveltejs/vite-plugin-svelte": "^4.0.0",
+		"autoprefixer": "^10.4.20",
+		"bits-ui": "^1.0.0-next.59",
+		"clsx": "^2.1.1",
+		"lucide-svelte": "^0.460.1",
+		"prettier": "^3.3.2",
+		"prettier-plugin-svelte": "^3.2.6",
+		"prettier-plugin-tailwindcss": "^0.6.5",
+		"svelte": "^5.0.0",
+		"svelte-check": "^4.0.0",
+		"tailwind-merge": "^2.5.4",
+		"tailwind-variants": "^0.3.0",
+		"tailwindcss": "^3.4.9",
+		"tailwindcss-animate": "^1.0.7",
+		"typescript": "^5.0.0",
+		"unplugin-icons": "^0.20.1",
+		"vaul-svelte": "^1.0.0-next.3",
+		"vite": "^5.0.3"
+	},
+	"dependencies": {
+		"@tailwindcss/forms": "^0.5.9",
+		"@tailwindcss/typography": "^0.5.15",
+		"@telegram-apps/sdk-svelte": "^1.0.4",
+		"mutative": "^1.0.11"
+	}
+}
